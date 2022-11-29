@@ -37,7 +37,9 @@ class ConsoleHandler extends ReportHandler {
     logger.info("${report.error}");
     logger.info("");
     if (enableStackTrace) {
-      _printStackTraceFormatted(report.stackTrace as StackTrace?);
+      if (report.stackTrace is StackTrace) {
+        _printStackTraceFormatted(report.stackTrace as StackTrace?);
+      }
     }
     if (enableCustomParameters) {
       _printCustomParametersFormatted(report.customParameters);
